@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Samara Ali — Product & Innovation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Inter+Tight:wght@300;400;500&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f4f1ec;
+    --bg-warm: #ebe6dd;
+    --ink: #1a1816;
+    --ink-soft: #5a544c;
+    --ink-muted: #8a8278;
+    --rule: #d9d2c5;
+    --accent: #8b3a2f;
+    --accent-soft: #c87d65;
+    --serif: "Fraunces", "Times New Roman", serif;
+    --sans: "Inter Tight", -apple-system, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* paper-like grain */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.35;
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(0,0,0,0.025) 1px, transparent 0);
+    background-size: 3px 3px;
+    mix-blend-mode: multiply;
+  }
+
+  ::selection { background: var(--accent); color: var(--bg); }
+
+  a { color: inherit; text-decoration: none; }
+
+  .wrap {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 48px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: blur(12px) saturate(140%);
+    background: rgba(244, 241, 236, 0.78);
+    border-bottom: 1px solid var(--rule);
+  }
+  .nav-inner {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 18px 48px;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  .nav-mark {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 19px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+  .nav-mark .floret { color: var(--accent); margin-right: 4px; }
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    text-transform: lowercase;
+    color: var(--ink-soft);
+  }
+  .nav-links a { position: relative; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0; bottom: -3px;
+    width: 0; height: 1px;
+    background: var(--accent);
+    transition: width 0.3s ease;
+  }
+  .nav-links a:hover::after { width: 100%; }
+
+  /* ─── HERO ─── */
+  .hero {
+    padding: 140px 0 120px;
+    position: relative;
+  }
+  .hero-meta {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 36px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .hero-meta::before {
+    content: "";
+    width: 28px; height: 1px;
+    background: var(--ink-muted);
+  }
+  .hero-name {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(56px, 9vw, 112px);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    margin-bottom: 10px;
+  }
+  .hero-pron {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 300;
+    font-size: 22px;
+    color: var(--ink-muted);
+    margin-bottom: 56px;
+    letter-spacing: 0.01em;
+  }
+  .hero-pron .ipa {
+    font-family: var(--mono);
+    font-style: normal;
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin-right: 8px;
+  }
+  .hero-statement {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(24px, 3vw, 34px);
+    line-height: 1.35;
+    letter-spacing: -0.015em;
+    max-width: 780px;
+    color: var(--ink);
+  }
+  .hero-statement em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero-statement .floret {
+    color: var(--accent);
+    font-style: normal;
+    margin-left: 4px;
+  }
+  .hero-current {
+    margin-top: 56px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--ink-soft);
+  }
+  .pulse {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 0 rgba(139, 58, 47, 0.5);
+    animation: pulse 2.4s infinite;
+  }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(139, 58, 47, 0.5); }
+    70% { box-shadow: 0 0 0 8px rgba(139, 58, 47, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(139, 58, 47, 0); }
+  }
+  .scroll-cue {
+    margin-top: 80px;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 15px;
+    color: var(--ink-muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .scroll-cue .arrow {
+    display: inline-block;
+    animation: drift 2s ease-in-out infinite;
+  }
+  @keyframes drift {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(4px); }
+  }
+
+  /* ─── SECTION HEAD ─── */
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 24px;
+    margin-bottom: 64px;
+    padding-top: 100px;
+    border-top: 1px solid var(--rule);
+    padding-top: 60px;
+  }
+  .section-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(28px, 3.5vw, 40px);
+    letter-spacing: -0.015em;
+  }
+
+  /* ─── PROJECTS ─── */
+  .projects {
+    padding-bottom: 80px;
+  }
+  .project {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 36px;
+    padding: 40px 0;
+    border-top: 1px solid var(--rule);
+    cursor: pointer;
+    transition: padding 0.4s ease, background 0.4s ease;
+    position: relative;
+  }
+  .project:last-child { border-bottom: 1px solid var(--rule); }
+  .project:hover {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .project::after {
+    content: "→";
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%) translateX(-12px);
+    font-family: var(--serif);
+    font-size: 28px;
+    color: var(--accent);
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+  }
+  .project:hover::after {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+  }
+  .project-index {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-muted);
+    letter-spacing: 0.04em;
+    padding-top: 8px;
+  }
+  .project-body { max-width: 720px; }
+  .project-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+    display: inline-block;
+    padding: 4px 10px;
+    border: 1px solid var(--accent);
+    border-radius: 999px;
+  }
+  .project-title {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(26px, 3vw, 36px);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 14px;
+    color: var(--ink);
+  }
+  .project-title em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--ink-soft);
+  }
+  .project-desc {
+    font-size: 16px;
+    color: var(--ink-soft);
+    max-width: 620px;
+    margin-bottom: 18px;
+  }
+  .project-meta {
+    display: flex;
+    gap: 24px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+  }
+  .project-meta span { display: flex; align-items: center; gap: 6px; }
+  .project-meta .dot {
+    width: 4px; height: 4px;
+    background: var(--ink-muted);
+    border-radius: 50%;
+  }
+
+  /* ─── MUSINGS ─── */
+  .musings {
+    padding: 80px 0;
+  }
+  .musings-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+  .musing {
+    background: var(--bg);
+    padding: 40px 36px;
+    transition: background 0.3s;
+    cursor: pointer;
+  }
+  .musing:hover { background: var(--bg-warm); }
+  .musing-kicker {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 14px;
+  }
+  .musing-title {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 300;
+    font-size: 26px;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    margin-bottom: 12px;
+  }
+  .musing-excerpt {
+    font-size: 15px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+
+  /* ─── ABOUT STRIP ─── */
+  .about {
+    padding: 100px 0 80px;
+    border-top: 1px solid var(--rule);
+  }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .about-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+  .about-text {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(20px, 2vw, 24px);
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .about-text em { font-style: italic; color: var(--accent); }
+  .about-tags {
+    margin-top: 32px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .about-tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 6px 12px;
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    color: var(--ink-soft);
+    letter-spacing: 0.02em;
+  }
+
+  /* ─── CONTACT ─── */
+  .contact {
+    padding: 120px 0 80px;
+    border-top: 1px solid var(--rule);
+    text-align: center;
+  }
+  .contact-prompt {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(36px, 5.5vw, 64px);
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    max-width: 880px;
+    margin: 0 auto 48px;
+  }
+  .contact-prompt .floret { color: var(--accent); font-style: normal; }
+  .contact-email {
+    font-family: var(--serif);
+    font-size: 22px;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 4px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .contact-email:hover { color: var(--accent); border-color: var(--accent); }
+  .contact-socials {
+    margin-top: 48px;
+    display: flex;
+    gap: 28px;
+    justify-content: center;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .contact-socials a {
+    border-bottom: 1px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+    padding-bottom: 2px;
+  }
+  .contact-socials a:hover { color: var(--accent); border-color: var(--accent); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    padding: 32px 0 48px;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    color: var(--ink-muted);
+  }
+  footer .heart { color: var(--accent); }
+
+  /* ─── REVEAL ─── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+  }
+  .reveal.in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 720px) {
+    body { font-size: 16px; }
+    .wrap { padding: 0 24px; }
+    .nav-inner { padding: 16px 24px; }
+    .nav-links { gap: 18px; font-size: 11px; }
+    .hero { padding: 80px 0 70px; }
+    .hero-name { font-size: 56px; }
+    .hero-statement { font-size: 22px; }
+    .project { grid-template-columns: 1fr; gap: 12px; padding: 32px 0; }
+    .project-index { padding-top: 0; }
+    .project:hover { padding-left: 0; padding-right: 0; }
+    .project::after { display: none; }
+    .musings-grid { grid-template-columns: 1fr; }
+    .about-grid { grid-template-columns: 1fr; gap: 32px; }
+    .section-head { gap: 14px; margin-bottom: 40px; }
+    footer { flex-direction: column; gap: 8px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#top" class="nav-mark"><span class="floret">❦</span>Samara Ali</a>
+    <div class="nav-links">
+      <a href="#work">work</a>
+      <a href="#musings">musings</a>
+      <a href="#about">about</a>
+      <a href="#contact">contact</a>
+    </div>
+  </div>
+</nav>
+
+<main class="wrap" id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-meta reveal">Portfolio &nbsp;·&nbsp; 2025</div>
+    <h1 class="hero-name reveal">Samara Ali</h1>
+    <div class="hero-pron reveal"><span class="ipa">[suh-MAH-ruh]</span> <em>noun.</em> product analyst &amp; innovation strategist.</div>
+    <p class="hero-statement reveal">
+      I build products and shape funds that move capital, care, and technology toward the places they're most needed — across <em>health tech, fintech,</em> and <em>innovation ecosystems</em>. <span class="floret">❦</span>
+    </p>
+    <div class="hero-current reveal">
+      <span class="pulse"></span>
+      <span>Currently — Product &amp; Commercialization Analyst</span>
+    </div>
+    <div class="reveal">
+      <div class="scroll-cue">scroll for selected work <span class="arrow">↓</span></div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section id="work" class="projects">
+    <div class="section-head reveal">
+      <span class="section-num">01 — Selected Work</span>
+      <h2 class="section-title">things I've shipped &amp; shaped</h2>
+    </div>
+
+    <a class="project reveal" href="#">
+      <div class="project-index">001 / Fintech</div>
+      <div class="project-body">
+        <span class="project-tag">Feature Launch</span>
+        <h3 class="project-title">Digital Withdrawal — <em>redeem investments in a few taps</em></h3>
+        <p class="project-desc">Reimagined a high-friction redemption flow into a four-step mobile experience, reducing drop-off and support tickets while preserving regulatory guardrails.</p>
+        <div class="project-meta">
+          <span>2024</span>
+          <span><span class="dot"></span>Mobile · iOS &amp; Android</span>
+          <span><span class="dot"></span>Lead PA</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="project reveal" href="#">
+      <div class="project-index">002 / Fintech</div>
+      <div class="project-body">
+        <span class="project-tag">Product Launch</span>
+        <h3 class="project-title">Your Future, Powered By You — <em>a gender-based fund</em></h3>
+        <p class="project-desc">From thesis to market: led commercial analysis, segmentation, and launch positioning for a fund built around the financial realities women actually face.</p>
+        <div class="project-meta">
+          <span>2024</span>
+          <span><span class="dot"></span>Emerging Markets</span>
+          <span><span class="dot"></span>Strategy &amp; GTM</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="project reveal" href="#">
+      <div class="project-index">003 / Public Innovation</div>
+      <div class="project-body">
+        <span class="project-tag">Impact Analytics</span>
+        <h3 class="project-title">NASA's Seed Fund — <em>making impact legible</em></h3>
+        <p class="project-desc">Designed a measurement framework that translates early-stage technical milestones into commercialization signals — so the right ventures get the right next dollar.</p>
+        <div class="project-meta">
+          <span>2024</span>
+          <span><span class="dot"></span>North America</span>
+          <span><span class="dot"></span>Metrics Design</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="project reveal" href="#">
+      <div class="project-index">004 / AI &amp; Operations</div>
+      <div class="project-body">
+        <span class="project-tag">AI System</span>
+        <h3 class="project-title">Hollend Furnishings — <em>an AI-driven product knowledge system</em></h3>
+        <p class="project-desc">Stood up a retrieval-grounded knowledge layer for a furnishings retailer so customer-facing teams stop hunting through PDFs and start answering with confidence.</p>
+        <div class="project-meta">
+          <span>2025</span>
+          <span><span class="dot"></span>Retail</span>
+          <span><span class="dot"></span>AI / RAG</span>
+        </div>
+      </div>
+    </a>
+  </section>
+
+  <!-- MUSINGS -->
+  <section id="musings" class="musings">
+    <div class="section-head reveal">
+      <span class="section-num">02 — Product Musings</span>
+      <h2 class="section-title">making sense of intricate systems</h2>
+    </div>
+
+    <div class="musings-grid reveal">
+      <a class="musing" href="#">
+        <div class="musing-kicker">Essay · Requirements</div>
+        <h3 class="musing-title">To Require, or Not to Require?</h3>
+        <p class="musing-excerpt">On the quiet politics of a required field — what asking costs you, and what not asking costs everyone else.</p>
+      </a>
+      <a class="musing" href="#">
+        <div class="musing-kicker">Essay · Design</div>
+        <h3 class="musing-title">Of Workflows &amp; Everything in Between</h3>
+        <p class="musing-excerpt">A workflow is a hypothesis about how someone wants their day to go. Most of mine have been wrong in interesting ways.</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="about">
+    <div class="about-grid">
+      <div class="about-label reveal">03 — About</div>
+      <div>
+        <p class="about-text reveal">
+          I work at the intersection of <em>product analysis</em> and <em>innovation strategy</em> — translating between the people building the thing, the people funding it, and the people who'll eventually use it. My background spans AI imaging platforms, commercialization analytics, and high-impact product launches across North America and emerging markets.
+        </p>
+        <div class="about-tags reveal">
+          <span class="about-tag">Product Analysis</span>
+          <span class="about-tag">Commercialization</span>
+          <span class="about-tag">Health Tech</span>
+          <span class="about-tag">Fintech</span>
+          <span class="about-tag">AI Systems</span>
+          <span class="about-tag">Impact Measurement</span>
+          <span class="about-tag">Go-to-Market</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact">
+    <h2 class="contact-prompt reveal">Let's talk about the thoughtful, useful things you're trying to build. <span class="floret">❦</span></h2>
+    <a class="contact-email reveal" href="mailto:samaraali36@gmail.com">samaraali36@gmail.com</a>
+    <div class="contact-socials reveal">
+      <a href="https://www.linkedin.com/in/samaraali36/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a href="mailto:samaraali36@gmail.com">Email</a>
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </section>
+
+  <footer>
+    <div>© 2025 Samara Ali</div>
+    <div>Made with <span class="heart">❦</span> &nbsp;·&nbsp; Redesigned 2026</div>
+  </footer>
+
+</main>
+
+<script>
+  // staggered reveal on load
+  const heroReveals = document.querySelectorAll('.hero .reveal');
+  heroReveals.forEach((el, i) => {
+    setTimeout(() => el.classList.add('in'), 120 + i * 140);
+  });
+
+  // intersection-based reveal for everything else
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+
+  document.querySelectorAll('section:not(.hero) .reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
